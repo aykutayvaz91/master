@@ -25,12 +25,16 @@ class HomeController extends Controller
         {
             $this->message = "ok";
             $userId = Auth::id();
-
+            
             $user = User::where("id",$userId)->get(); //::search('Star Trek')->where('user_id', 1)->get();
             //$users = Country::where('name', 'like', '%' . $request->search_value . '%')->get();
             //$this->User()->name;
 
-            return view('home.index')->with('users',$user);
+            //$searchResultQuery = User::whereNotNull('gks_id')->select('gks_id')->get();
+            
+            $searchResultQuery = User::where('gks_id','!=',0)->orWhereNull('gks_id')->select('gks_id')->get();
+
+            return view('home.index')->with('users',$user)->with('searchResultQuery',$searchResultQuery);
             //return view('home.index')->with('userId', $userId);
         }
         else

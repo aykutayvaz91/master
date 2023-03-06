@@ -3,12 +3,41 @@
 
 @section('content')
 
+
     <div class="bg-light p-3 rounded">
-        @auth
+    @auth
+
+    @php
+        $itemstring = "";
+        foreach($searchResultQuery as $instance)
+        {
+            $itemstring = $instance["gks_id"].",".$itemstring;
+           
+        }
+        
+    @endphp
+       <!-- <div class="container" style="position: relative;">
+            <div class="toast" style="position: absolute; top: 0; right: 0;">
+                <div class="toast-header">
+                    Mesaj
+                </div>
+                <div class="toast-body">
+                    Hoşgeldiniz.
+                </div>
+            </div>  
+        </div>
+
+        <div class="col-md-3 col-sm-3 col-xs-3 m-3">&nbsp;</div>-->
+
         <h2>Home</h2>
         <hr/>
+        <p id="user_id">{{ $users[0]['id'] }}</p>
         @if(isset($users[0]['fullname']))
-            <p>{{ $users[0]['fullname'] }}</p>
+            <p id="userfullname">{{ $users[0]['fullname'] }}</p>
+        @endif
+        @if($users[0]['gks_id']!="0")
+            <p id="usergks_id">{{ $users[0]['gks_id'] }}</p>
+            <!-- eşleştirilmemiş kullanıcıları sorgulaçek -->
         @endif
         <p class="lead">Only authenticated users can access this section.</p>
         <div class="input-group mb-3">
@@ -22,16 +51,57 @@
             <input type="text" id="searchby" class="form-control" placeholder="İsim,Soyisim veya Sicil No Giriniz" aria-label="Username" aria-describedby="basic-addon1">
             <a id="btnajax_apisearchby" class="btn btn-lg btn-primary" role="button">Ara</a>
         </div>
+        <hr/>
+        <div class="container pt-3">
+        <table id="myTable" class="d-none">
+            <thead>
+                <tr>
+                    <th>gks_id</th>
+                    <th>Sicil No</th>
+                    <th>İsim Soyisim</th>
+                    <th>Departman</th>
+                    <th>Ünvan</th>
+                    <th>Eşleştir</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
         
-        
+
+        </div>
+
+       
         @endauth
 
         @guest
         <h1>Homepage</h1>  
         <p class="lead">Your viewing the home page. Please login to view the restricted data.</p>
         @endguest
+        
     </div>
 @endsection
 @section('customjs')
     <script src="{!! url('assets/bootstrap/js/custom.js') !!}"></script>
+    <script>
+        // Use PHP tags for json_encode()
+       
+       
+        var resData = {!! json_encode($searchResultQuery) !!};
+       
+        /*var results = [];
+        json_encode($searchResultQuery)
+        gks_id_arr.forEach(x => 
+        {  if (x["gks_id"].includes("6")) 
+                results.push(x["gks_id"]);
+        });
+        // alert((gks_id_arr[0]["gks_id"]));
+        alert(results);*/
+        //alert((gks_id_arr[0]["gks_id"]));
+    </script>
+@endsection
+
+@section('footer')
+
 @endsection

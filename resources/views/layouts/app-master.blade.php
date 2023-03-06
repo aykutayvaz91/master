@@ -29,7 +29,8 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">
+    <!--<link href="{!! url('assets/css/app.css') !!}" rel="stylesheet">-->
+    <link href="{!! url('assets/datatables/datatables.min.css') !!}" rel="stylesheet">
 </head>
 <body>
     
@@ -48,9 +49,13 @@
     </div>
   </main>
   <footer>
-    <script src="{!! url('assets/bootstrap/js/jquery.min.js') !!}"></script>
-    <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
-    @yield('customjs')
+    @yield('footer')
+ 
   </footer>
+  <script src="{!! url('assets/bootstrap/js/jquery.min.js') !!}"></script>
+  <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+  <script src="{!! url('assets/datatables/datatables.min.js') !!}"></script>
+  <script src="{!! url('assets/bootstrap/js/bootbox.js') !!}"></script>
+  @yield('customjs')
 </body>
 </html>
