@@ -38,6 +38,8 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
 
         Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
         Route::get('/personel', 'PersonnelController@index')->name('personel.index');
+        Route::get('/appoint', 'AppointController@index')->name('appoint.index');
+        Route::get('/report', 'AppointController@list')->name('appoint.list');
         Route::post('/home/performsync', 'HomeController@performsync')->name('home.performsync');
     });
 });

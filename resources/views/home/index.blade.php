@@ -39,6 +39,7 @@
         
         @if(isset($users[0]['fullname']))
             <p id="userfullname">Hoşgeldiniz {{ $users[0]['fullname'] }}</p>
+            <p>Menü Listesi</p>
         @endif
         @if($users[0]['gks_id']=="0")
             <!-- eşleştirilmemiş kullanıcıları sorgulaçek -->
@@ -76,7 +77,7 @@
 
         </div>
         @else
-            <a href="" >Yemek Randevu Girişi için tıklayınız</a>
+            <a href="{{ route('appoint.index') }}" >Yemek Randevu Girişi için tıklayınız</a>
         @endif
         
         @endauth
@@ -90,6 +91,7 @@
     </div>
 @endsection
 @section('customjs')
+    <script src="{!! url('assets/bootstrap/js/fullcalendar.min.js') !!}"></script>
     <script src="{!! url('assets/bootstrap/js/custom.js') !!}"></script>
     <script>
         // Use PHP tags for json_encode()
