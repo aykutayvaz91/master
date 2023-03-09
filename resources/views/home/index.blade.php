@@ -1,5 +1,10 @@
 @extends('layouts.app-master')
 
+@section('customcss')
+
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
+@endsection
 
 @section('content')
 
@@ -29,17 +34,16 @@
 
         <div class="col-md-3 col-sm-3 col-xs-3 m-3">&nbsp;</div>-->
 
-        <h2>Home</h2>
+        <h2>Anasayfa</h2>
         <hr/>
-        <p id="user_id">{{ $users[0]['id'] }}</p>
+        
         @if(isset($users[0]['fullname']))
-            <p id="userfullname">{{ $users[0]['fullname'] }}</p>
+            <p id="userfullname">Hoşgeldiniz {{ $users[0]['fullname'] }}</p>
         @endif
-        @if($users[0]['gks_id']!="0")
-            <p id="usergks_id">{{ $users[0]['gks_id'] }}</p>
+        @if($users[0]['gks_id']=="0")
             <!-- eşleştirilmemiş kullanıcıları sorgulaçek -->
-        @endif
-        <p class="lead">Only authenticated users can access this section.</p>
+   
+        <p class="lead">GKS sistemi ile eşleştirmek için sicil no veya isim-soyisim verileriyle arama yapınız</p>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <div class="input-group-text">
@@ -71,13 +75,16 @@
         
 
         </div>
-
-       
+        @else
+            <a href="" >Yemek Randevu Girişi için tıklayınız</a>
+        @endif
+        
         @endauth
 
         @guest
-        <h1>Homepage</h1>  
-        <p class="lead">Your viewing the home page. Please login to view the restricted data.</p>
+        <h1>Fides Yemek Randevu Sistemi</h1>  
+        <!--<h2 class="lead">İşlemler İçin Giriş Yapınız</h2>-->
+        <img src="{!! url('/images/reserve.jpg') !!}" class="img-fluid" alt="Responsive image">
         @endguest
         
     </div>
@@ -89,6 +96,7 @@
        
        
         var resData = {!! json_encode($searchResultQuery) !!};
+        var performsyncurl = "{{ URL::route("home.performsync") }}";
        
         /*var results = [];
         json_encode($searchResultQuery)

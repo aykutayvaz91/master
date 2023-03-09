@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
-    <title>Signin Template · Bootstrap v5.1</title>
+    <title>Fides Yemek Randevu Sistemi</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -29,16 +29,17 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+
 </head>
 <body class="text-center">
-    
-    <main class="form-signin">
-      <div class="container-sm">
-          @yield('content')
-      </div>
-    </main>
-    
+  <div class="col-md-3 col-sm-3 col-xs-3 m-3">&nbsp;</div>
+    <div class="col-md-8 offset-md-2">
+      <main class="form-signin">
+        <div class="container-sm">
+            @yield('content')
+        </div>
+      </main>
+    </div>
 
 </body>
 </html>
