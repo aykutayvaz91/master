@@ -19,6 +19,11 @@ class AppointController extends Controller
         //return View('home.appoint');
         return "Rapor";
     }
+    public function me()
+    {
+        //return View('home.appoint');
+        return View('home.myappointments');
+    }
  
     public function save(Request $request)
     {

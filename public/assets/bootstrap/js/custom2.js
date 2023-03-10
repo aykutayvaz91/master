@@ -38,7 +38,7 @@
                             if(index)
                             {
                                 $.ajax({
-                                    url: performsaveurl,
+                                    url: "/appoint/save",
                                     type: "POST",
                                     data : {
                                         meal_date : info.dateStr,

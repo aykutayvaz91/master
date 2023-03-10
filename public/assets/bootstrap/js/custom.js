@@ -48,7 +48,7 @@
                 {
                    
                     $.ajax({
-                        url: performsyncurl,
+                        url: "/home/performsync",
                         type: "POST",
                         data : {
                             gks_id:gks_id,

@@ -9,6 +9,7 @@
         
       @auth
         <li><a href="{{ route('home.index') }}" class="nav-link px-2 text-white">Anasayfa</a></li>
+        <li><a href="{{ route('appoint.me') }}" class="nav-link px-2 text-white">Randevularım</a></li>
         <li><a href="{{ route('appoint.index') }}" class="nav-link px-2 text-white">Randevu Kayıt</a></li>
         <li><a href="{{ route('appoint.list') }}" class="nav-link px-2 text-white">Raporlar</a></li>
         
