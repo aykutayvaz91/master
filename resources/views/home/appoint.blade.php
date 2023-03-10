@@ -18,50 +18,9 @@
 @endsection
 @section('customjs')
     <script src="{!! url('assets/bootstrap/js/fullcalendar.min.js') !!}"></script>
-    <script src="{!! url('assets/bootstrap/js/custom.js') !!}"></script>
+    <script src="{!! url('assets/bootstrap/js/custom2.js') !!}"></script>
     <script>
-
-            $(function() {
-            var calendarEl = document.getElementById('calendar');
-            var tdyDate = new Date();
-            var mxDate = new Date();
-            mxDate.setDate(mxDate.getDate() + 7);
-            var calendar = new FullCalendar.Calendar(calendarEl, { 
-                validRange: {
-                    start: tdyDate,
-                    end: mxDate
-                },   
-                eventSources: [{
-                    events:[{
-                            id: 'a',
-                            title: 'my event',
-                            start: '2023-03-02'
-                            }]
-                        }],
-                dateClick: function(info) {
-                    alert(info.dateStr);
-                },
-                
-            });
-            calendar.render();
-            });
-
-        </script>
-    <script>
-        // Use PHP tags for json_encode()
-       
-       
-       
-       
-        /*var results = [];
-        json_encode($searchResultQuery)
-        gks_id_arr.forEach(x => 
-        {  if (x["gks_id"].includes("6")) 
-                results.push(x["gks_id"]);
-        });
-        // alert((gks_id_arr[0]["gks_id"]));
-        alert(results);*/
-        //alert((gks_id_arr[0]["gks_id"]));
+        var performsaveurl= "{{ URL::route("appoint.save") }}";
     </script>
 @endsection
 

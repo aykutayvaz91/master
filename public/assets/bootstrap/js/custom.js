@@ -63,16 +63,29 @@
                         success: function(data) {
                             //console.log("eşleştirildi");//ajax eşleştir post
                             console.log(JSON.stringify(data));
-                            
+                            bootbox.alert({
+                                size: 'small',
+                                message: 'Eşleştirme Başarılı!',
+                                closeButton: false,
+                                callback: function(result) { /* result is a boolean; true = OK, false = Cancel*/ 
+                                }
+                            });
                         },
                         error: function(xhr, ajaxOptions, thrownError) {
                             // Handle any errors that occur during the request
+                            bootbox.alert({
+                                size: 'small',
+                                message: 'Başarısız Eşleştirme!',
+                                closeButton: false,
+                                callback: function(result) { /* result is a boolean; true = OK, false = Cancel*/ 
+                                }
+                            });
                             alert("ajax error");
                         }
                     }).done(function(){
-                        /*setTimeout(function(){
+                        setTimeout(function(){
                             window.location.reload();
-                         }, 5000);*/
+                         }, 2000);
                     });
 
                 }
@@ -179,50 +192,15 @@ $(function(){
                             { "data": "position" },
                             { 'data': null, title: 'Eşleştir', 
                             "render": function (data, type, row, meta) { 
-                                //var gks_id = $(this).parent().siblings(":first").text();
-                                //alert(gks_id);
-                                /*gks_id_arr.forEach(x => {
-                                
-                                    //alert(x["gks_id"]);
-                                    //alert($(".place").myfunction());
-                                    //alert();
-                                });*/
-
-                               /* gks_id_arr.forEach(x => {
-                                            if( x["gks_id"]==row["gks_id"])
-                                            {
-                                                //esleştirilmiş
-                                                return '<p>Eşleştirilmiş</p>'
-                                                console.log("esleşti bizim database"+x["gks_id"]+ "uzak database "+row["gks_id"])
-                                            }
-                                            else
-                                            {
-                                                return '<button type="button" class="btn btn-light place" onclick="$(this).myfunction()" >Eşleştir</button>';
-                                            }
-                                        });
-                                    */
+                               
                                     return '<button type="button" class="btn btn-light place" onclick="$(this).myfunction()" >Eşleştir</button>';
                                       
-                                //console.log(row["gks_id"]);
-                                //return '<button type="button" class="btn btn-light place" onclick="$(this).myfunction()" >Eşleştir</button>';
-                                //else
-                                    //return '<button type="button" class="btn btn-light place" onclick="alert(\'blade\')">Eşleştir</button>';
-                            } },
+                                } },
                         ],                   
                     });
 
 
-                    // Do something with the data returned by the server
-                    /*for (let i = 0; i < data["result"].length; i++) {
-                        added_row = '<tr>'
-                            + '<td>' + data["result"].id + '</td>'
-                            + '<td>' + data["result"].workoutName + '</td>'
-                            + '<td>' + data["result"].qryOrd + '</td>'
-                            + '<td>' + data["result"].order + '</td>'
-                     + '</tr>'
-                           $("#myTable").append(added_row)
-                           $("#myTable").ajax.reload();
-                    }*/
+                    
                 },
                 error: function(xhr, ajaxOptions, thrownError) {
                     // Handle any errors that occur during the request
